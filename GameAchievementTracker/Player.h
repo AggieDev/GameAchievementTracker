@@ -12,5 +12,8 @@ public:
 	Player();
 	~Player();
 	Player(int id, string name);
+
+	//public accessors
 	string toString();
+	int getID();
 };

@@ -21,3 +21,8 @@ string Player::toString()
 {
 	return "Name: " + name + " ID: " + to_string(id) + "\n";
 }
+
+int Player::getID()
+{
+	return id;
+}

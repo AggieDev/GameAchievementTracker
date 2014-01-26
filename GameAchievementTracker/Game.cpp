@@ -22,3 +22,8 @@ string Game::toString()
 {
 	return "Name: " + name + " ID: " + to_string(id) + "\n";
 }
+
+void Game::addIGN(int id, string name)
+{
+	ignList.push_back(make_pair(name, id));
+}

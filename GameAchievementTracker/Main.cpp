@@ -10,18 +10,18 @@
 using namespace std;
 
 //following 2 functions are used to split a string, used to parse input splitting by spaces
-vector<string> &split(const string &s, char delim, vector<string> &elems) {
-	stringstream ss(s);
+vector<string> &split(const string &str, char chr, vector<string> &list) {
+	stringstream ss(str);
 	string item;
-	while (getline(ss, item, delim)) {
-		elems.push_back(item);
+	while (getline(ss, item, chr)) {
+		list.push_back(item);
 	}
-	return elems;
+	return list;
 }
-vector<string> split(const string &s, char delim) {
-	vector<string> elems;
-	split(s, delim, elems);
-	return elems;
+vector<string> split(const string &str, char chr) {
+	vector<string> vecList;
+	split(str, chr, vecList);
+	return vecList;
 }
 
 string removeQuotes(string str)
@@ -48,7 +48,7 @@ void addPlayer(vector<string> arguments)
 	}
 	catch (out_of_range)
 	{
-		cout << "Wrong parameters used.\n";
+		cout << "Wrong parameters used. Try AddPlayer <Player ID> <Player Name>\n";
 	}
 }
 
@@ -71,7 +71,7 @@ void addGame(vector<string> arguments)
 	}
 	catch (out_of_range)
 	{
-		cout << "Wrong parameters used.\n";
+		cout << "Wrong parameters used. Try AddGame <Game ID> <Game Name>\n";
 	}
 }
 
@@ -83,17 +83,8 @@ void addAchievement(vector<string> arguments)
 		string name = "";
 		if (arguments.at(3).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
 		{
-			for (int i = 3; i < arguments.size(); i++)
-			{
-				//if not end quote, keep adding
-				if (arguments.at(i).substr(arguments.at(i).length() - 2, arguments.at(i).length() - 1) != "\"")
-					name += arguments.at(i) + " ";
-				else //else finish adding to name
-				{
-					name += arguments.at(i) + " ";
-					break;
-				}
-			}
+			for (int i = 3; i < arguments.size() - 1; i++)	//add all but last
+				name += arguments.at(i) + " ";
 			name = removeQuotes(name);
 		}
 		else
@@ -103,8 +94,13 @@ void addAchievement(vector<string> arguments)
 	}
 	catch (out_of_range e)
 	{
-		cout << "Wrong parameters used.\n" + e.what();
+		cout << "Wrong parameters used. Try AddAchievement <Game ID> <Achievement ID> <Achievement Name> <Achievement Points>\n";
 	}
+}
+
+void addPlays(vector<string> arguments)
+{
+
 }
 
 void determineFunction(vector<string> arguments)
@@ -117,7 +113,7 @@ void determineFunction(vector<string> arguments)
 	else if (functionCall == "AddAchievement")
 		addAchievement(arguments);
 	else if (functionCall == "Plays")
-		cout << "Adding player playing game...\n";
+		addPlays(arguments);
 	else if (functionCall == "AddFriends")
 		cout << "Adding friends...\n";
 	else if (functionCall == "Achieve")
@@ -149,9 +145,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (!(input == "exit"))
 		{
 			vector<string> inputVec = split(input, ' ');
-			//test split by string
-			/*for (int i = 0; i < inputVec.size(); i++)
-				cout << inputVec.at(i) + "\n";*/
 			determineFunction(inputVec);
 		}
 	}

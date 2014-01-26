@@ -8,6 +8,9 @@
 
 using namespace std;
 
+//database has static methods to allow methods/data members to belong to class,
+//only 1 database, no instances needed
+
 class Database
 {
 	//private
