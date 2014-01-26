@@ -19,7 +19,7 @@ public:
 	//public functions
 	static Player newPlayer(int id, string name);
 	static Game newGame(int id, string name);
-	static Achievement newAchievement(int gameID, int achID, int achName, int pts);
+	static Achievement newAchievement(int gameID, int id, string name, int pts);
 
 	//testing
 	static void printPlayers();
