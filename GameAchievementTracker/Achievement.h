@@ -12,7 +12,7 @@ public:
 	Achievement(int gameID, int id, std::string name, int points);
 	std::string toString();
 
-	//accessors
+	//public accessors
 	int getID(){ return id; };
 	int getPoints(){ return points; };
 	int getGameID(){ return gameID; };

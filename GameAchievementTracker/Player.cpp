@@ -7,8 +7,6 @@
 Player::Player()
 {
 }
-
-
 Player::~Player()
 {
 }
@@ -19,11 +17,13 @@ Player::Player(int i, string n)
 	name = n;
 }
 
+//add to list of games that player plays, as well as ign for that game
 void Player::addPlays(int gameID, string ign)
 {
 	playsList.push_back(make_pair(ign, gameID));
 }
 
+//return if player has given achievement
 bool Player::playerHasAchievement(int gameID, int achID)
 {
 	for (int i = 0; i < achievementList.size(); i++)
@@ -46,11 +46,13 @@ string Player::toString()
 int Player::getTotalGamerscore()
 {
 	int gamerScore = 0;
+	//tally achievement score for all achieved achievements
 	for (int i = 0; i < achievementList.size(); i++)
 	{
-		Achievement* thisAchievement = Database::getAchievementByID(achievementList.at(i).second);
+		Achievement* thisAchievement = Database::getAchievementByID(achievementList.at(i).first, achievementList.at(i).second);
 		gamerScore += thisAchievement->getPoints();
 	}
+	//return total
 	return gamerScore;
 }
 

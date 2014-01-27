@@ -13,14 +13,14 @@ using namespace std;
 vector<string> &split(const string &str, char chr, vector<string> &list) {
 	stringstream ss(str);
 	string item;
-	while (getline(ss, item, chr)) {
+	while (getline(ss, item, chr)) {	//for each split, push into the list
 		list.push_back(item);
 	}
 	return list;
 }
 vector<string> split(const string &str, char chr) {
 	vector<string> vecList;
-	split(str, chr, vecList);
+	split(str, chr, vecList);	//split string str by chr, returning vector vecList
 	return vecList;
 }
 
@@ -35,14 +35,14 @@ void addPlayer(vector<string> arguments)
 	{
 		// support quotes for name
 		string playerName = "";
-		if (arguments.at(2).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to player name
+		if (arguments.at(2).substr(0, 1) == "\"")		//if begins with quote, add words in quotes to player name
 		{
-			for (int i = 2; i < arguments.size(); i++)
+			for (int i = 2; i < arguments.size(); i++)	//add each word to player name
 				playerName += arguments.at(i) + " ";
 			playerName = removeQuotes(playerName);
 		}
 		else
-			playerName = arguments.at(2);
+			playerName = arguments.at(2);				//if no quotes, single word player name
 		Database::newPlayer(atoi(arguments.at(1).c_str()), playerName);
 		Database::printPlayers();
 	}
@@ -58,14 +58,14 @@ void addGame(vector<string> arguments)
 	{
 		//support quotes for name
 		string gameName = "";
-		if (arguments.at(2).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
+		if (arguments.at(2).substr(0, 1) == "\"")		//if begins with quote, add words in quotes to game name
 		{
-			for (int i = 2; i < arguments.size(); i++)
+			for (int i = 2; i < arguments.size(); i++)	//add each word to game name
 				gameName += arguments.at(i) + " ";
 			gameName = removeQuotes(gameName);
 		}
 		else
-			gameName = arguments.at(2);
+			gameName = arguments.at(2);					//if no quotes, single word game name
 		Database::newGame(atoi(arguments.at(1).c_str()), gameName);
 		Database::printGames();
 	}
@@ -81,14 +81,14 @@ void addAchievement(vector<string> arguments)
 	{
 		//support quotes for name
 		string name = "";
-		if (arguments.at(3).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
+		if (arguments.at(3).substr(0, 1) == "\"")			//if begins with quote, add words in quotes to game name
 		{
 			for (int i = 3; i < arguments.size() - 1; i++)	//add all but last
 				name += arguments.at(i) + " ";
 			name = removeQuotes(name);
 		}
 		else
-			name = arguments.at(3);
+			name = arguments.at(3);							//if no quote, single word achievement name
 		Database::newAchievement(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), name, atoi(arguments.at(arguments.size() -1).c_str()));
 		Database::printAchievements();
 	}
@@ -103,16 +103,16 @@ void addPlays(vector<string> arguments)
 	try
 	{
 		string ign = "";
-		if (arguments.at(3).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
+		if (arguments.at(3).substr(0, 1) == "\"")		//if begins with quote, add words in quotes to game name
 		{
 			for (int i = 3; i < arguments.size(); i++)	//add the rest
 				ign += arguments.at(i) + " ";
 			ign = removeQuotes(ign);
 		}
 		else
-			ign = arguments.at(3);
+			ign = arguments.at(3);						//if no quote, single word ign
 		Game* newPlays = Database::playerPlays(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), ign);
-		//used for testing
+		//used for testing the players of a game are correct
 		newPlays->printGamesPlay();
 	}
 	catch (out_of_range e)
@@ -121,6 +121,7 @@ void addPlays(vector<string> arguments)
 	}
 }
 
+//grab first argument of string input to determine what function to call
 void determineFunction(vector<string> arguments)
 {
 	string functionCall = arguments.at(0);
@@ -145,7 +146,7 @@ void determineFunction(vector<string> arguments)
 	else if (functionCall == "SummarizeGame")
 		Database::summarizeGame(atoi(arguments.at(1).c_str()));
 	else if (functionCall == "SummarizeAchievement")
-		cout << "Showing achievement summary...\n";
+		Database::summarizeAchievement(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()));
 	else if (functionCall == "AchievementRanking")
 		Database::achievementRanking();
 	else

@@ -17,29 +17,31 @@ class Database
 	static vector<Player> playerList;
 	static vector<Game> gameList;
 	static vector<Achievement> achievementList;
+	//used for sorting
 	static bool comparison(pair<int, string> i, pair<int, string> j);
 
 public:
 	//public functions
+	//data assigning/additions
 	static Player newPlayer(int id, string name);
 	static Game newGame(int id, string name);
 	static Achievement newAchievement(int gameID, int id, string name, int pts);
 	static Game* playerPlays(int playerID, int gameID, string ign);
 	static void makeFriends(int firstID, int secondID);
 	static void achieved(int playerID, int gameID, int achievementID);
+	//printing reports
 	static void printFriendsWhoPlay(int playerID, int gameID);
 	static void printPlayerGameSummary(int gameNum, int gameID, int playerID, string ign);
 	static void printPlayerFriendSummary(int playerFriend);
 	static void comparePlayers(int playerID1, int playerID2, int gameID);
 	static void summarizePlayer(int playerID);
 	static void summarizeGame(int gameID);
+	static void summarizeAchievement(int gameID, int achID);
 	static void achievementRanking();
-
 	//accessors
 	static Player* getPlayerByID(int id);
 	static Game* getGameByID(int id);
-	static Achievement* getAchievementByID(int id);
-
+	static Achievement* getAchievementByID(int gameID, int achID);
 	//printouts for testing
 	static void printPlayers();
 	static void printGames();

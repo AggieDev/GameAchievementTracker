@@ -7,8 +7,6 @@ using namespace std;
 Game::Game()
 {
 }
-
-
 Game::~Game()
 {
 }
@@ -20,16 +18,13 @@ Game::Game(int i, string n)
 	achievementNumber = 0;
 }
 
+//add to list of players playing this game
 void Game::addPlays(int playerID, string ign)
 {
 	ignList.push_back(make_pair(ign, playerID));
 }
 
-void Game::addIGN(int id, string name)
-{
-	ignList.push_back(make_pair(name, id));
-}
-
+//print all players and IGNs that play this game
 void Game::printGamesPlay()
 {
 	for (int i = 0; i < ignList.size(); i++)
