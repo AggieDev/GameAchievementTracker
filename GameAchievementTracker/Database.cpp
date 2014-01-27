@@ -229,7 +229,7 @@ void Database::summarizeGame(int gameID)
 
 void Database::achievementRanking()
 {
-	cout << "\nAchievement Ranking:\n------------------\n";
+	cout << "\nAchievement Ranking:\n-------------------\n";
 	//vector<Player> inorderList;
 	vector<pair<int, string>> playersInOrder;
 	for (int i = 0; i < playerList.size(); i++)
