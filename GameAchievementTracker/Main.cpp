@@ -42,7 +42,7 @@ void addPlayer(vector<string> arguments)
 			playerName = removeQuotes(playerName);
 		}
 		else
-			playerName = arguments.at(3);
+			playerName = arguments.at(2);
 		Database::newPlayer(atoi(arguments.at(1).c_str()), playerName);
 		Database::printPlayers();
 	}
@@ -65,7 +65,7 @@ void addGame(vector<string> arguments)
 			gameName = removeQuotes(gameName);
 		}
 		else
-			gameName = arguments.at(3);
+			gameName = arguments.at(2);
 		Database::newGame(atoi(arguments.at(1).c_str()), gameName);
 		Database::printGames();
 	}
@@ -100,7 +100,26 @@ void addAchievement(vector<string> arguments)
 
 void addPlays(vector<string> arguments)
 {
-
+	try
+	{
+		string ign = "";
+		if (arguments.at(3).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
+		{
+			cout << "starts with quote\n";
+			for (int i = 3; i < arguments.size(); i++)	//add the rest
+				ign += arguments.at(i) + " ";
+			ign = removeQuotes(ign);
+		}
+		else
+			ign = arguments.at(3);
+		Game* newPlays = Database::playerPlays(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), ign);
+		//used for testing
+		newPlays->printGamesPlay();
+	}
+	catch (out_of_range e)
+	{
+		cout << "Wrong parameters used. Try Plays <Player ID> <Game ID> <Player IGN>\n";
+	}
 }
 
 void determineFunction(vector<string> arguments)
@@ -115,13 +134,13 @@ void determineFunction(vector<string> arguments)
 	else if (functionCall == "Plays")
 		addPlays(arguments);
 	else if (functionCall == "AddFriends")
-		cout << "Adding friends...\n";
+		Database::makeFriends(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()));
 	else if (functionCall == "Achieve")
-		cout << "Adding achievement to player...\n";
+		Database::achieved(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), atoi(arguments.at(3).c_str()));
 	else if (functionCall == "FriendsWhoPlay")
-		cout << "Showing which friends play the game...\n";
+		Database::printFriendsWhoPlay(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()));
 	else if (functionCall == "ComparePlayers")
-		cout << "Comparing players...\n";
+		Database::comparePlayers(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), atoi(arguments.at(3).c_str()));
 	else if (functionCall == "SummarizePlayer")
 		cout << "Showing player summary...\n";
 	else if (functionCall == "SummarizeGame")
