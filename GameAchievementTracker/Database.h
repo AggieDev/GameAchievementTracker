@@ -17,6 +17,7 @@ class Database
 	static vector<Player> playerList;
 	static vector<Game> gameList;
 	static vector<Achievement> achievementList;
+	static bool comparison(pair<int, string> i, pair<int, string> j);
 
 public:
 	//public functions
@@ -27,7 +28,12 @@ public:
 	static void makeFriends(int firstID, int secondID);
 	static void achieved(int playerID, int gameID, int achievementID);
 	static void printFriendsWhoPlay(int playerID, int gameID);
+	static void printPlayerGameSummary(int gameNum, int gameID, int playerID, string ign);
+	static void printPlayerFriendSummary(int playerFriend);
 	static void comparePlayers(int playerID1, int playerID2, int gameID);
+	static void summarizePlayer(int playerID);
+	static void summarizeGame(int gameID);
+	static void achievementRanking();
 
 	//accessors
 	static Player* getPlayerByID(int id);

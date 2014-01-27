@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Database.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -153,7 +154,97 @@ void Database::comparePlayers(int playerID1, int playerID2, int gameID)
 	cout << secondPlayer->getName() + ":\tAchievements: " + player2Fraction + "\tPoints (for this game): " + to_string(player2PtCount) + "\n";
 }
 
+void Database::summarizePlayer(int playerID)
+{
+	Player* player = getPlayerByID(playerID);
+	string name = player->getName();
+	string gamerScore = to_string(player->getTotalGamerscore());
+	vector<pair<string, int>> playsList = player->getPlaysList(); //string is ign, int is game id
+	vector<int> friendList = player->getFriendList();
 
+	//first part of printing
+	cout << "\nPlayer: " + name + "\tTotal Gamerscore: " + gamerScore + " pts\n\n" +
+		"Game name\tAchievements\tGamerscore\tIGN\n---------------------------------------------------\n";
+	//for each game, print its summary for this player
+	for (int i = 0; i < playsList.size(); i++)
+		printPlayerGameSummary(i + 1, playerID, playsList.at(i).second, playsList.at(i).first);
+
+	cout << "\nFriend name\t\tGamerscore\n---------------------------------------------------\n";
+	//for each friend, print their summary (name and gamerscore)
+	for (int i = 0; i < friendList.size(); i++)
+		printPlayerFriendSummary(friendList.at(i));
+
+}
+
+//prints a line for the game when summarizing player
+void Database::printPlayerGameSummary(int gameNum, int playerID, int gameID, string ign)
+{
+	Game* game = getGameByID(gameID);
+	//first int is game id, second is achievement id
+	vector<pair<int, int>> playerAchievements = getPlayerByID(playerID)->getAchievementList();
+	string gameName = game->getName();
+	string totalAchNumber = to_string(getGameByID(gameID)->getAchievementNumber());
+	int achievementNumCount = 0;
+	int achievementScore = 0;
+
+	//tally achievements for this game
+	for (int i = 0; i < playerAchievements.size(); i++)
+	{
+		//if achievement is for this game
+		if (playerAchievements.at(i).first == gameID)
+		{
+			achievementNumCount++;
+			achievementScore += getAchievementByID(playerAchievements.at(i).second)->getPoints();
+		}
+	}
+	string scoreString = to_string(achievementScore);
+	if (achievementScore == 0)
+		scoreString = "N/A";
+	else
+		scoreString += " pts";
+
+	string fraction = to_string(achievementNumCount) + "/" + totalAchNumber;
+	cout << to_string(gameNum) + ". " + gameName + "\t" + fraction + "\t\t" + scoreString + "\t\t" + ign + "\n";
+}
+
+void Database::printPlayerFriendSummary(int friendID)
+{
+	Player* playerFriend = getPlayerByID(friendID);
+	string name = playerFriend->getName();
+	string gamerscore = to_string(playerFriend->getTotalGamerscore()) + " pts";
+	cout << name + "\t" + gamerscore + "\n";
+}
+
+void Database::summarizeGame(int gameID)
+{
+	////string is ign, int is player id
+	//vector<pair<string, int>> ignList = getGameByID(gameID)->getIGNList();
+	//cout << "Players who have played this game:\nName\tIGN\n------------------------------\n";
+	////print players who've played game, as well as their igns
+	//for (int i = 0; i < ignList.size(); i++)
+	//	cout << getPlayerByID(ignList.at(i).second)->getName() + "\t" + ignList.at(i).first + "\n";
+
+	//for (int i = 0; i < achievementList.size(); i++)
+}
+
+void Database::achievementRanking()
+{
+	cout << "\nAchievement Ranking:\n------------------\n";
+	//vector<Player> inorderList;
+	vector<pair<int, string>> playersInOrder;
+	for (int i = 0; i < playerList.size(); i++)
+		playersInOrder.push_back(make_pair(playerList.at(i).getTotalGamerscore(), playerList.at(i).getName()));
+	sort(playersInOrder.begin(), playersInOrder.end(), comparison);
+	for (int i = 0; i < playerList.size(); i++)
+		cout << playersInOrder.at(i).second + "\t" + to_string(playersInOrder.at(i).first) + " pts\n";
+
+}
+
+//used for sorting
+bool Database::comparison(pair<int, string> i, pair<int, string> j)
+{
+	return (i.first>j.first);
+}
 
 //accessors
 

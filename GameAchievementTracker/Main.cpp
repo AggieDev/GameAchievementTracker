@@ -105,7 +105,6 @@ void addPlays(vector<string> arguments)
 		string ign = "";
 		if (arguments.at(3).substr(0, 1) == "\"")	//if begins with quote, add words in quotes to game name
 		{
-			cout << "starts with quote\n";
 			for (int i = 3; i < arguments.size(); i++)	//add the rest
 				ign += arguments.at(i) + " ";
 			ign = removeQuotes(ign);
@@ -142,13 +141,13 @@ void determineFunction(vector<string> arguments)
 	else if (functionCall == "ComparePlayers")
 		Database::comparePlayers(atoi(arguments.at(1).c_str()), atoi(arguments.at(2).c_str()), atoi(arguments.at(3).c_str()));
 	else if (functionCall == "SummarizePlayer")
-		cout << "Showing player summary...\n";
+		Database::summarizePlayer(atoi(arguments.at(1).c_str()));
 	else if (functionCall == "SummarizeGame")
-		cout << "Showing game summary...\n";
+		Database::summarizeGame(atoi(arguments.at(1).c_str()));
 	else if (functionCall == "SummarizeAchievement")
 		cout << "Showing achievement summary...\n";
 	else if (functionCall == "AchievementRanking")
-		cout << "Showing achievement ranking...\n";
+		Database::achievementRanking();
 	else
 		cout << "Command '" + functionCall + "' is not valid.\n";
 }
