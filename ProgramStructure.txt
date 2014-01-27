@@ -1,5 +1,0 @@
-Players with names, id's, list of other players as friends, 
-   games they play, list of pairs (each pair has game and player ign)
-Games with names, id's, list of achievements (each achievement has 
-   list of player id's that have achieved it)
-Achievements with names, ids, game id it belongs to, # points
