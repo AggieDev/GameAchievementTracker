@@ -24,6 +24,16 @@ void Player::addPlays(int gameID, string ign)
 	playsList.push_back(make_pair(ign, gameID));
 }
 
+bool Player::playerHasAchievement(int gameID, int achID)
+{
+	for (int i = 0; i < achievementList.size(); i++)
+	{
+		//if player has achievement
+		if ((achievementList.at(i).first == gameID) && (achievementList.at(i).second == achID))
+			return true;
+	}
+	return false; //achievement not found for player
+}
 
 
 //accessors
@@ -60,7 +70,7 @@ void Player::printFriends()
 
 void Player::printAchievements()
 {
-	cout << name + " has the following achievements:\n--------------\n";
+	cout << "\n" + name + " has the following achievements:\n-------------------------\n";
 	for (int i = 0; i < achievementList.size(); i++)
 		cout << "Achievement with id of " + to_string(achievementList.at(i).second) + " from game with id of " + to_string(achievementList.at(i).first) + "\n";
 }

@@ -1,7 +1,13 @@
-﻿Build started 1/27/2014 3:00:33 AM.
+﻿Build started 1/27/2014 12:12:27 PM.
      1>Project "C:\Users\Waylon\Desktop\Dropbox\Spring 2014\CSCE 315\Visual Studio\GameAchievementTracker\GameAchievementTracker\GameAchievementTracker.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\GameAchievementTracker.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Database.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\GameAchievementTracker.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Database.cpp Player.cpp
+         Player.cpp
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\player.cpp(29): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\player.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\player.cpp(61): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\player.cpp(67): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\player.cpp(74): warning C4018: '<' : signed/unsigned mismatch
          Database.cpp
      1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(97): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(101): warning C4018: '<' : signed/unsigned mismatch
@@ -10,14 +16,18 @@
      1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(169): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(174): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(191): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(235): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(238): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(254): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(269): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(284): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(299): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(309): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(319): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(225): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(230): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(237): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(259): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(262): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(278): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(293): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(308): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(323): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(333): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\waylon\desktop\dropbox\spring 2014\csce 315\visual studio\gameachievementtracker\gameachievementtracker\database.cpp(343): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Waylon\Desktop\Dropbox\Spring 2014\CSCE 315\Visual Studio\GameAchievementTracker\Debug\GameAchievementTracker.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Waylon\Desktop\Dropbox\Spring 2014\CSCE 315\Visual Studio\GameAchievementTracker\Debug\GameAchievementTracker.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Waylon\Desktop\Dropbox\Spring 2014\CSCE 315\Visual Studio\GameAchievementTracker\Debug\GameAchievementTracker.lib" /MACHINE:X86 Debug\Achievement.obj
          Debug\Database.obj
@@ -30,4 +40,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.80
+Time Elapsed 00:00:12.93

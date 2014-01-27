@@ -155,17 +155,17 @@ void determineFunction(vector<string> arguments)
 int _tmain(int argc, _TCHAR* argv[])
 {
 	string input = "";
-	while (!(input == "exit"))
+	while (input != "exit")
 	{
 		cout << "\nEnter a command, or 'exit' to end program:\n";
 		getline(cin, input);
-		//so that on the exit prompt it doesn't parse as an achievement command
-		if (!(input == "exit"))
+		//so that on the exit prompt, it doesn't parse as an achievement command
+		if (input != "exit")
 		{
 			vector<string> inputVec = split(input, ' ');
 			determineFunction(inputVec);
 		}
 	}
-	return 0;
+	return 0;	//exit program
 }
 

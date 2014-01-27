@@ -217,20 +217,38 @@ void Database::printPlayerFriendSummary(int friendID)
 
 void Database::summarizeGame(int gameID)
 {
-	////string is ign, int is player id
-	//vector<pair<string, int>> ignList = getGameByID(gameID)->getIGNList();
-	//cout << "Players who have played this game:\nName\tIGN\n------------------------------\n";
-	////print players who've played game, as well as their igns
-	//for (int i = 0; i < ignList.size(); i++)
-	//	cout << getPlayerByID(ignList.at(i).second)->getName() + "\t" + ignList.at(i).first + "\n";
+	Game* thisGame = getGameByID(gameID);
+	//string is ign, int is player id
+	vector<pair<string, int>> ignList = thisGame->getIGNList();
+	cout << "\nPlayers who have played " + thisGame->getName() + ":\nName\t\tIGN\n------------------------\n";
+	//print players who've played game, as well as their igns
+	for (int i = 0; i < ignList.size(); i++)
+		cout << getPlayerByID(ignList.at(i).second)->getName() + "\t\t" + ignList.at(i).first + "\n";
 
-	//for (int i = 0; i < achievementList.size(); i++)
+	cout << "\nTimes each achievement achieved for this game:\nName\t\t\t# achieved across players\n-----------------------------------\n";
+	//iterate through achievement list
+	for (int i = 0; i < achievementList.size(); i++)
+	{
+		//if achievement is for this game
+		if (achievementList.at(i).getGameID() == gameID)
+		{
+			int achievementCounter = 0;
+			//iterate through each player who plays this game to see if they have achievement
+			for (int j = 0; j < ignList.size(); j++)
+			{
+				//if this player has achievement
+				if (getPlayerByID(ignList.at(j).second)->playerHasAchievement(gameID, achievementList.at(i).getID()))
+					achievementCounter++;					
+			}
+			cout << achievementList.at(i).getName() + "\t" + to_string(achievementCounter) + "\n";
+		}
+	}
 }
 
 void Database::achievementRanking()
 {
 	cout << "\nAchievement Ranking:\n-------------------\n";
-	//vector<Player> inorderList;
+	
 	vector<pair<int, string>> playersInOrder;
 	for (int i = 0; i < playerList.size(); i++)
 		playersInOrder.push_back(make_pair(playerList.at(i).getTotalGamerscore(), playerList.at(i).getName()));
@@ -295,30 +313,30 @@ Achievement* Database::getAchievementByID(int id)
 
 void Database::printPlayers()
 {
-	cout << "Current player list:\n----------------\n";
+	cout << "\nCurrent player list:\n-------------------\n";
 	for (int i = 0; i < playerList.size(); i++)
 	{
 		cout << playerList.at(i).toString();
 	}
-	cout << "----------------\n";
+	cout << "\n";
 }
 
 void Database::printGames()
 {
-	cout << "Current game list:\n----------------\n";
+	cout << "\nCurrent game list:\n------------------\n";
 	for (int i = 0; i < gameList.size(); i++)
 	{
 		cout << gameList.at(i).toString();
 	}
-	cout << "----------------\n";
+	cout << "\n";
 }
 
 void Database::printAchievements()
 {
-	cout << "Current achievement list:\n----------------\n";
+	cout << "\nCurrent achievement list:\n-----------------------\n";
 	for (int i = 0; i < achievementList.size(); i++)
 	{
 		cout << achievementList.at(i).toString();
 	}
-	cout << "----------------\n";
+	cout << "\n";
 }

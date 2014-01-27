@@ -15,5 +15,7 @@ public:
 	//accessors
 	int getID(){ return id; };
 	int getPoints(){ return points; };
+	int getGameID(){ return gameID; };
+	std::string getName(){ return name; };
 };
 

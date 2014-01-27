@@ -19,6 +19,7 @@ public:
 	void addPlays(int gameID, string ign);
 	void addFriend(int id){ friendList.push_back(id); };
 	void addAchievement(int gameID, int achievementID){ achievementList.push_back(make_pair(gameID, achievementID)); };
+	bool playerHasAchievement(int gameID, int achID);
 
 	//public accessors
 	string toString();
